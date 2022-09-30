@@ -28,6 +28,8 @@ dataSource = self
     func showViewContAtIndex(_ index: Int) -> ContentViewController?{
         guard index >= 0 else {return nil}
         guard index < presentScrreonContent.count else {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: "presentation was viewed")
             dismiss(animated: true, completion: nil)
             return nil }
         guard let contentViewController = storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else { return nil}
